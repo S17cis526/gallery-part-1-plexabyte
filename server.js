@@ -13,6 +13,7 @@ var port = 3000; //80 usually for development, requires admin
 function serveImage(filename, req, res) {
   var body = fs.readFile('images/' + filename, function(err, body) {
     if (err) {
+      console.error(err);
       res.statusCode = 500;
       res.statusMessage = "whoops";
       res.end("silly me");
@@ -26,7 +27,7 @@ function serveImage(filename, req, res) {
 
 var server = http.createServer((req, res) => {
 
-  switch(req,url) {
+  switch(req.url) {
     case "/chess":
       serveImage('fern.jpg', req, res);
       break;
