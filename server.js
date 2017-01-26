@@ -11,7 +11,14 @@ var fs = require('fs');
 var port = 3000; //80 usually for development, requires admin
 
 function serveImage(filename, req, res) {
-  var body = fs.readFileSync('images/' + filename);
+  var body = fs.readFile('images/' + filename, function(err, body) {
+    if (err) {
+      res.statusCode = 500;
+      res.statusMessage = "whoops";
+      res.end("silly me");
+      return;
+    }
+  });
   res.setHeader("Content-Type", "image/jpeg");
   res.end(body);
 }
