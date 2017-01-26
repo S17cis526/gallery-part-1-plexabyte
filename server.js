@@ -21,6 +21,7 @@ var server = http.createServer((req, res) => {
   default:
     res.statusCode = 404;
     res.statusMessage = "Not Found";
+    res.end();
   }
 
 });
