@@ -10,6 +10,9 @@ var http = require('http');
 var fs = require('fs');
 var port = 3000; //80 usually for development, requires admin
 
+//var chess = fs.readFileSync('images/chess.jpg');
+//var fern = fs.readFileSync('images/fern.jpg');
+
 function serveImage(filename, req, res) {
   var body = fs.readFile('images/' + filename, function(err, body) {
     if (err) {
@@ -31,12 +34,14 @@ var server = http.createServer((req, res) => {
   switch(req.url) {
     case "/chess":
       serveImage('chess.jpg', req, res);
+      //res.end(chess);
       break;
     case "/fern":
     case "/fern/":
     case "/fern.jpg":
     case "/fern.jpeg":
       serveImage('fern.jpg', req, res);
+      //res.end(fern);
       break;
     case "/mobile":
       serveImage('mobile.jpg', req, res);
