@@ -19,9 +19,10 @@ function serveImage(filename, req, res) {
       res.end("silly me");
       return;
     }
-  });
+
   res.setHeader("Content-Type", "image/jpeg");
   res.end(body);
+  });
 }
 
 
