@@ -14,16 +14,23 @@ var server = http.createServer((req, res) => {
 
   switch(req,url) {
     case "/chess":
-    var body = fs.readFileSync('images/chess.jpg');
-    res.setHeader("Content-Type", "image/jpeg");
-    res.end(body);
-    break;
+      var body = fs.readFileSync('images/chess.jpg');
+      res.setHeader("Content-Type", "image/jpeg");
+      res.end(body);
+      break;
+    case "/fern":
+    case "/fern/":
+    case "/fern.jpg":
+    case "/fern.jpeg":
+      var body = fs.readFileSync('images/chess.jpg');
+      res.setHeader("Content-Type", "image/jpeg");
+      res.end(body);
+      break;
   default:
     res.statusCode = 404;
     res.statusMessage = "Not Found";
     res.end();
   }
-
 });
 
 server.listen(port, ()=> {
