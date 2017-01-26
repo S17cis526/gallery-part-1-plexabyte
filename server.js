@@ -30,13 +30,16 @@ var server = http.createServer((req, res) => {
 
   switch(req.url) {
     case "/chess":
-      serveImage('fern.jpg', req, res);
+      serveImage('chess.jpg', req, res);
       break;
     case "/fern":
     case "/fern/":
     case "/fern.jpg":
     case "/fern.jpeg":
       serveImage('fern.jpg', req, res);
+      break;
+    case "mobile":
+      serveImage('mobile.jpg', req, res);
       break;
   default:
     res.statusCode = 404;
