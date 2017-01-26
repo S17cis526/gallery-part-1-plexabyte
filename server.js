@@ -38,7 +38,7 @@ var server = http.createServer((req, res) => {
     case "/fern.jpeg":
       serveImage('fern.jpg', req, res);
       break;
-    case "mobile":
+    case "/mobile":
       serveImage('mobile.jpg', req, res);
       break;
   default:
