@@ -10,21 +10,24 @@ var http = require('http');
 var fs = require('fs');
 var port = 3000; //80 usually for development, requires admin
 
+function serveImage(filename, req, res) {
+  var body = fs.readFileSync('images/chess.jpg');
+  res.setHeader("Content-Type", "image/jpeg");
+  res.end(body);
+}
+
+
 var server = http.createServer((req, res) => {
 
   switch(req,url) {
     case "/chess":
-      var body = fs.readFileSync('images/chess.jpg');
-      res.setHeader("Content-Type", "image/jpeg");
-      res.end(body);
+      serveImage('fern.jpg', req, res);
       break;
     case "/fern":
     case "/fern/":
     case "/fern.jpg":
     case "/fern.jpeg":
-      var body = fs.readFileSync('images/chess.jpg');
-      res.setHeader("Content-Type", "image/jpeg");
-      res.end(body);
+      serveImage('fern.jpg', req, res);
       break;
   default:
     res.statusCode = 404;
