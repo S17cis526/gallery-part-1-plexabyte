@@ -32,7 +32,19 @@ function serveImage(filename, req, res) {
 var server = http.createServer((req, res) => {
 
   switch(req.url) {
+    case "/gallery":
+      var html = '<!doctype html>';
+          html += '<head><title>Gallery</title></head>';
+          html += '<body>';
+          html += ' <h1>Gallery</h1>';
+          html += ' <image src = "/ace.jpg" alt="a fishing ace at work">';
+          html += ' <h1>Hello.</h1> Time is ' + Date.now();
+          html += '</body>';
+      res.setHeader('Content-Type', 'text/html');
+      res.end(html);
+      break;
     case "/chess":
+    case "/chess.jpg":
       serveImage('chess.jpg', req, res);
       //res.end(chess);
       break;
@@ -42,14 +54,17 @@ var server = http.createServer((req, res) => {
     case "/fern.jpeg":
       serveImage('fern.jpg', req, res);
       //res.end(fern);
+
       break;
     case "/mobile":
       serveImage('mobile.jpg', req, res);
       break;
     case "/ace":
+    case "/ace.jpg":
       serveImage('ace.jpg', req, res);
       break;
     case "/bubble":
+    case "/bubble.jpg":
       serveImage('bubble.jpg', req, res);
       break;
   default:
