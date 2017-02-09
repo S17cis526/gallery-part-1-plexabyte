@@ -11,8 +11,8 @@ var url = require('url');
 var fs = require('fs');
 var port = 3000; //80 usually for development, requires admin
 
-
-var config = JSON.parse(fs.readFileSync('config.json'));
+var title = "Gallery";
+// var config = JSON.parse(fs.readFileSync('config.json'));
 var stylesheet = fs.readFileSync('gallery.css');
 
 var imageNames = ['ace.jpg', 'bubble.jpg', 'chess.jpg', 'fern.jpg', 'mobile.jpg'];
@@ -34,17 +34,34 @@ function imageNamesToTags(fileNames) {
   });
 }
 
+// function generateImageForm() {
+//   return
+//     '<form enctype="multipart/form-data" action="/" method="POST">' +
+//     '  <input type="file" name="image">' +
+//     '  <input type="submit" value="Upload Image">' +
+//     '</form>';
+// }
+
 function buildGallery(imageTags) {
   // console.log(imageTags, " buildGallery");
   var html = '<!doctype html>';
       html += '<head>';
-      html += '<title>' + config.title + '</title>';
+      html += '<title>' + /*config.*/title + '</title>';
       html += '<link href="/gallery.css" rel="stylesheet" type="text/css">'
       html += '</head>';
       html += '<body>';
-      html += ' <h1>' + config.title + '</h1>';
-      html += '<form action="' //finish
+      html += ' <h1>' + /*config.*/title + '</h1>';
+      html += ' <form action=""">'; //finish
+      html += '  <input type ="text" name="title">';
+      html += '  <input type="submit" value="Change Gallery Title">';
+      html += ' </form>';
+      html += '<form enctype="multipart/form-data" action="/" method="POST">' +
+              '  <input type="file" name="image">' +
+              '  <input type="submit" value="Upload Image">' +
+              '</form>';
+      // html += generateImageForm();
       html += imageNamesToTags(imageTags).join('');
+      html += '<form action = "" '
       html += ' <h1>Hello.</h1> Time is ' + Date.now();
       html += '</body>';
   return html;
@@ -80,7 +97,29 @@ function serveImage(filename, req, res) {
   });
 }
 
+function uploadImage(req, res) {
+  var body='';
+  req.on('error', function() {
+    res.statusCode = 500;
+    res.end();
+  });
+  req.on('data', function(data) {
+    body += data;
+  });
+  req.on('end', function() {
+    fs.writeFile('filename', data, function(err) {
+      if(err) {
+        console.error(err);
+        res.statusCode = 500;
+        res.end();
+        return;
+      }
 
+      serveGallery(req, res);
+
+    });
+  });
+}
 
 var server = http.createServer((req, res) => {
 
@@ -91,15 +130,19 @@ var server = http.createServer((req, res) => {
   if (urlParts.query) {
     var matches = /title=(.+)($|&)/.exec(urlParts.query);
     if (matches && matches[1]) {
-      config.title = decodeURIComponent(matches[1]);
-      fs.writeFile('config.json', JSON.stringify(config));
+      // config.title = decodeURIComponent(matches[1]);
+      title = decodeURIComponent(matches[1]);
+      // fs.writeFile('config.json', JSON.stringify(config));
     }
   }
 
   switch(urlParts.pathname) {
+
     case '/':
     case "/gallery":
-      serveGallery(req, res);
+      if (req.method == 'GET') {
+        serveGallery(req, res);
+      }
       break;
     case "/gallery.css":
       res.setHeader('Content-Type', 'text/css');
