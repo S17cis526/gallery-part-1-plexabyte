@@ -120,7 +120,6 @@ function serveImage(fileName, req, res) {
 function uploadImage(req, res) {
   multipart(req, res, function(req, res) {
     // make sure an image was uploaded
-    console.log('filename', req.body.filename)
     if(!req.body.image.filename) {
       console.error("No file in upload");
       res.statusCode = 400;
