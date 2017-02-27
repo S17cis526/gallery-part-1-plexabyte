@@ -161,15 +161,15 @@ function uploadImage(req, res) {
         return;
       }
       serveGallery(req, res);
-    });
-    gallery.push({
-      description: req.body.description,
-      image: req.body.image.filename,
-      title: req.body.title
+      gallery.push({
+        description: req.body.description,
+        image: req.body.image.filename,
+        title: req.body.title
+      });
+      fs.writeFile('gallery.json', JSON.stringify(gallery, null, "\t"));
     });
 
   });
-  fs.writeFile('gallery.json', JSON.stringify(gallery, null, "\t"));
 }
 
 /** @function handleRequest

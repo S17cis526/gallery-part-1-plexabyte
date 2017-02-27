@@ -19,45 +19,6 @@ title.onclick = function(e) {
   }
 };
 
-// for (var i = 0; i < images.length; i++) {
-//   images[i].addEventListener("click", function() {
-//     showImage(images[i]);
-//   });
-// }
-
-
-
-
-// for (var i=0, len=images.length, img; i<len; i++) {
-//   img = images[i];
-//     img.addEventListener("click", function() {
-//       var src = img.getAttribute("src");
-//       var desc = img.getAttribute("data-desc");
-//       var title = img.getAttribute("data-title");
-//
-//       showImage(src, desc, title);
-//     });
-//     // img.addEventListener("click", function(e){
-//     //   e.preventDefault();
-//     //   document.getElementById('largeImg').src = img.src;
-//     //   document.getElementById('imgTitle').append(img.getAttribute("data-title"));
-//     //   document.getElementById('imgDesc').append(img.getAttribute("data-desc"));
-//     // });
-// }
-//
-// // for (var i = 0, img; i < images.length; i++) {
-// //   img = images[i];
-// //   img.onclick = function(e) {
-// //     e.preventDefault();
-// //     img.addEventListener("click", function() {
-// //       var src = "/images/" + img.getAttribute("src");
-// //       var desc = img.getAttribute("data-desc");
-// //       var title = img.getAttribute("data-title");
-// //       showImage(src, desc, title);
-// //     });
-// //   }
-// // }
-
 function showImage(i) {
     document.getElementById('largeImg').src = images[i].getAttribute("src");
     document.getElementById('imgTitle').innerHTML = "<h2>" + images[i].getAttribute("data-title") + "</h2>";
