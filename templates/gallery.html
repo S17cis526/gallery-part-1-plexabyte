@@ -10,14 +10,16 @@
     <input type="text" name="title">
     <input type="submit" value="Change Gallery Title">
   </form>
-  <%= context.imageTags %>
+  <ul>
+    <%= context.imageTags %>
+  </ul>
   <div id="largeImgPanel" onclick="hideMe(this)">
     <div id="imgTitle"></div>
     <div id="imgDesc"></div>
     <img id="largeImg" style="height: 100%; margin: 0; padding: 0;">
   </div>
   <form id="image-upload-form" action="" method="POST" enctype="multipart/form-data">
-    <h2>Upload Image</h2>
+    <h2>Upload New Item</h2>
     <label for="image">
       Image File:
     <input type="file" name="image">

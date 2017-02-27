@@ -67,12 +67,12 @@ function getImageNames(callback) {
 function imageNamesToTagsJSON(json) {
   var tags = '';
   for(var i = 0; i < json.length; i++) {
-    tags += `<img class="smallPic" src="` + json[i].image +
+    tags += `<a href="#"><img class="smallPic" src="` + json[i].image +
             `" data-title="` + json[i].title +
             `" data-desc="`  + json[i].description +
             `" alt="`        + json[i].title +
             `" onclick="showImage(` + i + `)"` +
-            `  style="cursor:pointer">`;
+            `  style="cursor:pointer"></a>`;
   }
   // console.log(tags);
   return tags;
