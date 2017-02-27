@@ -1,6 +1,39 @@
-img {
+/*img {
   width: 250px;
+}*/
+
+#imgTitle {
+  color: rgba(175, 175, 175, 1);
 }
+
+#imgDesc {
+  color: rgba(175, 175, 175, 1);
+}
+
+.smallPic {
+  width: 250px;
+  padding: 10px;
+}
+
+#largeImgPanel {
+    text-align: center;
+    visibility: hidden;
+    position: fixed;
+    z-index: 100;
+    top: 0; left: 0;
+    width:100%;
+    height:100%;
+    background-color: rgba(100,100,100, 0.8);
+}
+
+#largeImg {
+  max-width: 50%;
+  max-height: 50%;
+}
+
+
+
+
 
 #gallery-title {
   cursor:pointer;

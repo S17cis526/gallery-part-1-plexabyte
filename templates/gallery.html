@@ -1,4 +1,5 @@
 <!doctype html>
+<html>
 <head>
   <title><%= context.title %></title>
   <link href="gallery.css" rel="stylesheet" type="text/css">
@@ -10,13 +11,27 @@
     <input type="submit" value="Change Gallery Title">
   </form>
   <%= context.imageTags %>
+  <div id="largeImgPanel" onclick="hideMe(this)">
+    <div id="imgTitle"></div>
+    <div id="imgDesc"></div>
+    <img id="largeImg" style="height: 100%; margin: 0; padding: 0;">
+  </div>
   <form id="image-upload-form" action="" method="POST" enctype="multipart/form-data">
     <h2>Upload Image</h2>
     <label for="image">
       Image File:
     <input type="file" name="image">
     </label>
+    <label for="title">
+      Title:
+      <input type="text" name="title">
+    </label>
+    <label for="description">
+      Description:
+      <input type="text" name="description">
+    </label>
     <input type="submit" value="Upload Image">
   </form>
   <script src="gallery.js"></script>
 </body>
+</html>
