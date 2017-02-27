@@ -1,27 +1,27 @@
 [
 	{
-		"description": "A fishing ace practices his craft.",
-		"image": "ace.jpg",
-		"title": "Ace"
+		"description": "Great for chopping small bits of wood.",
+		"image": "axe.jpg",
+		"title": "Small Axe"
 	},
 	{
-		"description": "A bubble freezes in sub-zero temperatures.",
-		"image": "bubble.jpg",
-		"title": "Frozen Bubble"
+		"description": "Great for chopping lots of hair!",
+		"image": "clippers.jpg",
+		"title": "Clippers"
 	},
 	{
-		"description": "A chess game",
-		"image": "chess.jpg",
-		"title": "Chess Game"
+		"description": "Chrome-plated wrench for those tough nuts.",
+		"image": "wrench.png",
+		"title": "Wrench"
 	},
 	{
-		"description": "A beautiful fern.",
-		"image": "fern.jpg",
-		"title": "Fern"
+		"description": "Use on all the nails you have.",
+		"image": "hammer.jpg",
+		"title": "Hammer"
 	},
 	{
-		"description": "A phone with AR.",
-		"image": "mobile.jpg",
-		"title": "Augmented Reality"
+		"description": "You'll be screwing for hours with this handy tool.",
+		"image": "screwdriver.jpg",
+		"title": "Screwdriver"
 	}
 ]
